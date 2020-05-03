@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>testing</module>
+        <module>java-advanced</module>
+        <module>fundamentals</module>
     </modules>
 
     <build>
