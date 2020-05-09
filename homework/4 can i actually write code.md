@@ -5,7 +5,7 @@
 
 - can I create a new class?	
         
-        create a new class in the src.main.java.com.bucur
+        create a new class in the src.main.java.com.sda.advanced
         
 - can I write a new java main?	
         
@@ -86,7 +86,7 @@
  
     given
        
-        src.main.java.com.bucur
+        src.main.java.com.sda.advanced
             parent.child1
   
     create child2 next to child1
@@ -95,7 +95,7 @@
 
     given
     
-        src.main.java.com.bucur
+        src.main.java.com.sda.advanced
             parent.child1
         class B
             app
@@ -103,7 +103,7 @@
      
     move package "app" to
 
-        src.main.java.com.bucur.app
+        src.main.java.com.sda.advanced.app
             class A
                 parent.child1
             class B

@@ -4,7 +4,7 @@
 The project contains multiple sub modules, each with a similar structure:
 
         course name (ex: java-advanced)
-            scr.main.java.com.bucur (packages)
+            scr.main.java.com.sda.advanced (packages)
                 topic (ex: collections)
                     subtopic (ex: map)
                         ex1 (proposed exercise)
@@ -19,6 +19,24 @@ The project contains multiple sub modules, each with a similar structure:
 - junit4
 - mockito
 - assertj
+
+---
+
+### java-advanced
+- oop
+
+    - inheritance
+    - encapsulation
+    - abstraction
+    - interfaces
+    - enums
+
+- exceptions
+
+- collections
+
+    - generics
+    - list
 
 ---
 
