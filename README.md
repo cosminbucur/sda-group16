@@ -36,9 +36,17 @@ The project contains multiple sub modules, each with a similar structure:
 - collections
 
     - generics
+    - stack
     - list
+    - set
+    - map
+    - queue
 
----
+- functional
+
+    - interfaces  
+    - lambda
+    - stream
 
 ## How to get it on your computer
 
