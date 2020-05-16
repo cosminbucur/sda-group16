@@ -19,3 +19,12 @@ p69 - p74
 
 - rewrite examples
 - solve exercises
+
+---
+
+# from SDA slides
+p75 - p86
+p103 - p130
+
+- rewrite examples
+- solve exercises
