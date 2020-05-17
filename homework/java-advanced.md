@@ -28,3 +28,11 @@ p103 - p130
 
 - rewrite examples
 - solve exercises
+
+---
+
+# from SDA slides
+p87 - p102
+
+- rewrite examples
+- solve exercises
