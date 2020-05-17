@@ -48,6 +48,20 @@ The project contains multiple sub modules, each with a similar structure:
     - lambda
     - stream
 
+- i/o
+
+    - io
+    - nio
+    - properties, yml
+    - logger
+    
+- concurrent
+
+    - thread
+    - executor
+    - callable
+    - synchronization
+
 ## How to get it on your computer
 
 ##### in browser
