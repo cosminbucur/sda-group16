@@ -12,6 +12,7 @@
         <module>testing</module>
         <module>java-advanced</module>
         <module>fundamentals</module>
+        <module>sql</module>
     </modules>
 
     <build>
