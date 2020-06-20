@@ -23,9 +23,9 @@ CREATE TABLE sql_tutorial.employees (
 -- create persons table
 CREATE TABLE `sql_tutorial`.`persons` (
   `id` INT NOT NULL,
-  `first_name` VARCHAR(45) NOT NULL,
-  `last_name` VARCHAR(45) NOT NULL,
-  `birth_date` DATE NOT NULL,
+  `first_name` VARCHAR(45),
+  `last_name` VARCHAR(45),
+  `birth_date` DATE,
   PRIMARY KEY (`id`));
 
 -- add column
