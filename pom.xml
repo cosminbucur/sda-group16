@@ -13,6 +13,7 @@
         <module>java-advanced</module>
         <module>fundamentals</module>
         <module>sql</module>
+        <module>nosql</module>
     </modules>
 
     <build>
