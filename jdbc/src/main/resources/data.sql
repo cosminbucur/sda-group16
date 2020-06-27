@@ -1,0 +1,9 @@
+CREATE SCHEMA IF NOT EXISTS `jdbc_tutorial`;
+USE `jdbc_tutorial`;
+
+CREATE TABLE IF NOT EXISTS `jdbc_tutorial`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL DEFAULT NULL,
+  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `country` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`));
