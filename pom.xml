@@ -15,6 +15,7 @@
         <module>sql</module>
         <module>nosql</module>
         <module>jdbc</module>
+        <module>hibernate</module>
     </modules>
 
     <build>
