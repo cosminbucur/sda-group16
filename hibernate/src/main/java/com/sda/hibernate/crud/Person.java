@@ -6,9 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity(name = "Person")
 @Table(name = "person")
+// POJO
 public class Person {
 
     @Id
@@ -65,5 +67,22 @@ public class Person {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) &&
+            Objects.equals(firstName, person.firstName) &&
+            Objects.equals(lastName, person.lastName) &&
+            Objects.equals(email, person.email) &&
+            Objects.equals(country, person.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email, country);
     }
 }
