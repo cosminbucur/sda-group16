@@ -23,7 +23,7 @@ public class DemoNativeQuery {
         List<Stock> traders = traderDao.findAllWithNativeQuery();
         logger.info("--- all traders: " + traders);
 
-        List filteredTraders = traderDao.findAllByNameWithNativeQuery(trader2.getName());
+        List filteredTraders = traderDao.findAllByNameWithNamedNativeQuery(trader2.getName());
         logger.info("--- filtered traders: " + filteredTraders);
 
         // then

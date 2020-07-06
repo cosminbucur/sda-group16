@@ -1,6 +1,6 @@
 package com.sda.hibernate.audit.customer;
 
-import com.bucur.audit.history.CustomerHistoryListener;
+import com.sda.hibernate.audit.history.CustomerHistoryListener;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
