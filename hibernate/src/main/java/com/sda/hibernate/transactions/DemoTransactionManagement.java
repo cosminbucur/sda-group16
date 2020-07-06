@@ -1,4 +1,4 @@
-package com.sda.hibernate.transcations;
+package com.sda.hibernate.transactions;
 
 import com.sda.hibernate.config.HibernateUtil;
 import com.sda.hibernate.crud.Person;
