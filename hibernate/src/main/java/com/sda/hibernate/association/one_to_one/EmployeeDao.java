@@ -7,9 +7,10 @@ import org.hibernate.Transaction;
 public class EmployeeDao {
 
     public void create(Employee employee) {
+        Session session = null;
         Transaction transaction = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(employee);
             transaction.commit();
@@ -18,17 +19,26 @@ public class EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     public Employee findById(Long id) {
+        Session session = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             Employee employee = session.find(Employee.class, id);
             return employee;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 }

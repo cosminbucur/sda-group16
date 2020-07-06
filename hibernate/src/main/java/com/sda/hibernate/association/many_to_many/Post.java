@@ -23,14 +23,16 @@ public class Post {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
+
+    // many to many relationship with join table
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-        name = "post_tag",
-        joinColumns = @JoinColumn(name = "post_id"),
-        inverseJoinColumns = @JoinColumn(name = "tag_id"))
+            name = "post_tag",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tags = new ArrayList<>();
 
     public Post() {
@@ -44,12 +46,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<Tag> getTags() {
@@ -63,22 +65,16 @@ public class Post {
     // helper methods
 
     public void addTag(Tag tag) {
-        // add tag to post (list of tags from post)
         tags.add(tag);
-
-        // add post to tag
         tag.getPosts().add(this);
     }
 
     public void removeTag(Tag tag) {
-        // remove tag from post (list of tags from post)
         tags.remove(tag);
-
-        // remove post from tag
         tag.getPosts().remove(this);
     }
 
-    // two posts are equal by id
+    // to posts are equal by id
 
     @Override
     public boolean equals(Object o) {

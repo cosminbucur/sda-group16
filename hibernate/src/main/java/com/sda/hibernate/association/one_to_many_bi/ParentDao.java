@@ -7,9 +7,10 @@ import org.hibernate.Transaction;
 public class ParentDao {
 
     public void create(Parent owner) {
+        Session session = null;
         Transaction transaction = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(owner);
             transaction.commit();
@@ -18,17 +19,26 @@ public class ParentDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     public Parent findById(Long id) {
+        Session session = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             Parent owner = session.find(Parent.class, id);
             return owner;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 }

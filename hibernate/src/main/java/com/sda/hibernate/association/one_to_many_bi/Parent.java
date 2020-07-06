@@ -85,8 +85,6 @@ public class Parent {
         children.add(child);
 
         // set parent on child
-        // set a on b
-        // b.setA
         child.setParent(this);
     }
 

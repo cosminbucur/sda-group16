@@ -29,12 +29,10 @@ public class StockDao {
         }
     }
 
-    // find all with hql query
     public List findAllWithHqlQuery() {
-//            String sql = "select * from stock";
         String hql = "from com.sda.hibernate.queries.hql.Stock";
-        List result = new ArrayList();
 
+        List result = new ArrayList();
         try {
             startOperation();
 
@@ -53,7 +51,6 @@ public class StockDao {
         return result;
     }
 
-    // named query with parameter
     public List findAllByStockCodeWithNamedQuery(String stockCode) {
         List result = new ArrayList();
 
@@ -62,6 +59,7 @@ public class StockDao {
 
             // query using HQL
             Query query = session.createNamedQuery("findStockByStockCode", Stock.class);
+            // use query from javax.persistence
             query.setParameter("stockCode", stockCode);
 
             result = query.getResultList();

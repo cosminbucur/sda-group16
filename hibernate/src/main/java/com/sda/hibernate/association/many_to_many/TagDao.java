@@ -7,9 +7,10 @@ import org.hibernate.Transaction;
 public class TagDao {
 
     public void create(Tag tag) {
+        Session session = null;
         Transaction transaction = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(tag);
             transaction.commit();
@@ -19,17 +20,26 @@ public class TagDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     public Tag findById(Long id) {
+        Session session = null;
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            session = HibernateUtil.getSessionFactory().openSession();
             Tag tag = session.find(Tag.class, id);
             return tag;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 }

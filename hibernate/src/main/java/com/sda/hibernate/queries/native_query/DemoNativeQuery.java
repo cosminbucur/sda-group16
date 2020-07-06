@@ -16,14 +16,14 @@ public class DemoNativeQuery {
         Trader trader2 = new Trader();
         trader2.setName("trader2");
 
-        TraderDao dao = new TraderDao();
-        dao.create(trader1);
-        dao.create(trader2);
+        TraderDao traderDao = new TraderDao();
+        traderDao.create(trader1);
+        traderDao.create(trader2);
 
-        List<Stock> traders = dao.findAllWithNativeQuery();
+        List<Stock> traders = traderDao.findAllWithNativeQuery();
         logger.info("--- all traders: " + traders);
 
-        List filteredTraders = dao.findAllByNameWithNativeQuery(trader2.getName());
+        List filteredTraders = traderDao.findAllByNameWithNativeQuery(trader2.getName());
         logger.info("--- filtered traders: " + filteredTraders);
 
         // then

@@ -1,18 +1,18 @@
-package com.sda.hibernate.crud;
+package com.sda.hibernate.audit.history;
 
 import com.sda.hibernate.config.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class PersonDao {
+public class CustomerHistoryRepository {
 
-    public void create(Person person) {
+    public void create(CustomerHistory customerHistory) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.save(person);
+            session.save(customerHistory);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -26,12 +26,12 @@ public class PersonDao {
         }
     }
 
-    public Person findById(Long id) {
+    public CustomerHistory findById(Long id) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            Person person = session.find(Person.class, id);
-            return person;
+            CustomerHistory customerHistory = session.find(CustomerHistory.class, id);
+            return customerHistory;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -42,13 +42,13 @@ public class PersonDao {
         }
     }
 
-    public void update(Person person) {
+    public void update(CustomerHistory customerHistory) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.update(person);
+            session.update(customerHistory);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -62,13 +62,13 @@ public class PersonDao {
         }
     }
 
-    public void delete(Person person) {
+    public void delete(CustomerHistory customerHistory) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.delete(person);
+            session.delete(customerHistory);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

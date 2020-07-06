@@ -52,7 +52,5 @@ public class DemoOneToManyUnidrectionalJoin {
 
         // eager
         // father = fatherDao.getFather(1)
-
-
     }
 }

@@ -1,5 +1,7 @@
 package com.sda.hibernate.association.many_to_many;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,9 +22,12 @@ public class Tag {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "title")
-    private String title;
+    // a tag is identified naturally by name
+    @NaturalId
+    @Column(name = "name")
+    private String name;
 
+    // many to many relationship
     @ManyToMany(mappedBy = "tags")
     private List<Post> posts = new ArrayList<>();
 
@@ -37,12 +42,12 @@ public class Tag {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Post> getPosts() {
@@ -53,18 +58,18 @@ public class Tag {
         this.posts = posts;
     }
 
-    // two tags are equal if their tiles are equal
+    // two tags are equal if their names are equal
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tag tag = (Tag) o;
-        return Objects.equals(title, tag.title);
+        return Objects.equals(name, tag.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title);
+        return Objects.hash(name);
     }
 }

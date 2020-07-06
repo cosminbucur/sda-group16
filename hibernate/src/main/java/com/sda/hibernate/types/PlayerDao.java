@@ -1,4 +1,4 @@
-package com.sda.hibernate.crud;
+package com.sda.hibernate.types;
 
 import com.sda.hibernate.config.HibernateUtil;
 import org.hibernate.HibernateException;
@@ -10,29 +10,23 @@ import org.hibernate.query.Query;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class PersonAdvancedDao {
+public class PlayerDao {
 
-    private static final Logger logger = Logger.getLogger(PersonAdvancedDao.class.getName());
+    private static final Logger logger = Logger.getLogger(PlayerDao.class.getName());
 
     private Session session;
     private Transaction tx;
 
-    /**
-     * Insert a new Person into the database.
-     *
-     * @param person
-     */
-    public void create(Person person) {
+    public void create(Player player) {
         try {
             startOperation();
-            session.save(person);
+            session.save(player);
             tx.commit();
-            session.close();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
-            logger.severe("could not save person");
+            logger.severe("could not save entity " + player);
         } finally {
             if (session != null) {
                 session.close();
@@ -40,66 +34,49 @@ public class PersonAdvancedDao {
         }
     }
 
-    /**
-     * Find an Person by its primary key.
-     *
-     * @param id
-     * @return a person
-     */
-    public Person findById(Long id) {
-        Person person = null;
+    public Player findById(Long id) {
+        Player player = null;
         try {
             startOperation();
-            person = session.find(Person.class, id);
-            session.close();
-            return person;
+            player = session.find(Player.class, id);
+            return player;
         } catch (HibernateException e) {
-            e.printStackTrace();
+            logger.severe("could not find entity by id " + id);
         } finally {
             if (session != null) {
                 session.close();
             }
         }
-        return person;
+        return player;
     }
 
-    /**
-     * Finds all Persons in the database.
-     *
-     * @return a list of Persons
-     */
     public List findAll() {
-        List<Person> persons = null;
+        List players = null;
         try {
             startOperation();
-            Query query = session.createQuery("FROM Person");
-            persons = query.list();
+            Query query = session.createQuery("FROM Player");
+            players = query.list();
             tx.commit();
         } catch (HibernateException e) {
-            e.printStackTrace();
+            logger.severe("could not find all");
         } finally {
             if (session != null) {
                 session.close();
             }
         }
-        return persons;
+        return players;
     }
 
-    /**
-     * Updates the state of a detached Person.
-     *
-     * @param person
-     */
-    public void update(Person person) {
+    public void update(Player player) {
         try {
             startOperation();
-            session.update(person);
+            session.update(player);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
-            e.printStackTrace();
+            logger.severe("could not update entity " + player);
         } finally {
             if (session != null) {
                 session.close();
@@ -107,22 +84,16 @@ public class PersonAdvancedDao {
         }
     }
 
-    /**
-     * Delete a detached Person from the database.
-     *
-     * @param person
-     */
-    public void delete(Person person) {
-        Session session = null;
+    public void delete(Player player) {
         try {
             startOperation();
-            session.delete(person);
+            session.delete(player);
             tx.commit();
-        } catch (HibernateException e) {
+        } catch (HibernateException ex) {
             if (tx != null) {
                 tx.rollback();
             }
-            e.printStackTrace();
+            logger.severe("could not delete entity " + player);
         } finally {
             if (session != null) {
                 session.close();
@@ -130,7 +101,7 @@ public class PersonAdvancedDao {
         }
     }
 
-    private void startOperation() throws HibernateException {
+    private void startOperation() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         session = sessionFactory.openSession();
         tx = session.beginTransaction();

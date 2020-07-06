@@ -1,18 +1,18 @@
-package com.sda.hibernate.crud;
+package com.sda.hibernate.audit.customer;
 
 import com.sda.hibernate.config.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class PersonDao {
+public class CustomerRepository {
 
-    public void create(Person person) {
+    public void create(Customer customer) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.save(person);
+            session.save(customer);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -26,12 +26,12 @@ public class PersonDao {
         }
     }
 
-    public Person findById(Long id) {
+    public Customer findById(Long id) {
         Session session = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            Person person = session.find(Person.class, id);
-            return person;
+            Customer customer = session.find(Customer.class, id);
+            return customer;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -42,13 +42,13 @@ public class PersonDao {
         }
     }
 
-    public void update(Person person) {
+    public void update(Customer customer) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.update(person);
+            session.update(customer);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -62,13 +62,13 @@ public class PersonDao {
         }
     }
 
-    public void delete(Person person) {
+    public void delete(Customer customer) {
         Session session = null;
         Transaction transaction = null;
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
-            session.delete(person);
+            session.delete(customer);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

@@ -5,15 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
-@NamedQueries({
-    @NamedQuery(
-        name = "findTraderByNameNativeSQL",
-        query = "SELECT * FROM trader t WHERE t.name = :name"
-    )
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "findTraderByNameNativeSQL",
+                query = "SELECT * FROM trader t WHERE t.name = :name"
+        )
 })
 @Entity(name = "Trader")
 @Table(name = "trader")

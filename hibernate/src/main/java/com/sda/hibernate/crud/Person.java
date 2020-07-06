@@ -10,7 +10,6 @@ import java.util.Objects;
 
 @Entity(name = "Person")
 @Table(name = "person")
-// POJO
 public class Person {
 
     @Id
