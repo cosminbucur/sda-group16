@@ -2,6 +2,6 @@ package com.sda.hibernate.types;
 
 public enum Status {
 
-    ACTIVE,
-    INACTIVE
+    ACTIVE, // 0
+    INACTIVE // 1
 }

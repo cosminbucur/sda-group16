@@ -27,7 +27,6 @@ public class PersonAdvancedDao {
             startOperation();
             session.save(person);
             tx.commit();
-            session.close();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
@@ -51,7 +50,6 @@ public class PersonAdvancedDao {
         try {
             startOperation();
             person = session.find(Person.class, id);
-            session.close();
             return person;
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -74,7 +72,6 @@ public class PersonAdvancedDao {
             startOperation();
             Query query = session.createQuery("FROM Person");
             persons = query.list();
-            tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {

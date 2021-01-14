@@ -35,7 +35,7 @@ public class Player {
     private int age;
 
     // enum
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private Status status;
 
     // embedded

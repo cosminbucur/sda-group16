@@ -16,6 +16,7 @@
         <module>nosql</module>
         <module>jdbc</module>
         <module>hibernate</module>
+        <module>recap</module>
     </modules>
 
     <build>

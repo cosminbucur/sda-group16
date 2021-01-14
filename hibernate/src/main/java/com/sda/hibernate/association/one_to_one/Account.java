@@ -28,7 +28,7 @@ public class Account {
 
     @OneToOne(
         mappedBy = "account",
-        cascade = CascadeType.ALL,
+        cascade = CascadeType.ALL,      // delete parent
         fetch = FetchType.LAZY,
         optional = false)
     private Employee employee;

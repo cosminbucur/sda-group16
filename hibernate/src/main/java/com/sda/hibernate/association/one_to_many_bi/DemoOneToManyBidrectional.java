@@ -23,6 +23,6 @@ public class DemoOneToManyBidrectional {
 
         // save
         ParentDao parentDao = new ParentDao();
-        parentDao.create(parent);
+        parentDao.create(parent);   // insert in parent , 2 insert in child
     }
 }

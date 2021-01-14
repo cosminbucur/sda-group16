@@ -70,7 +70,7 @@ The project contains multiple sub modules, each with a similar structure:
 - mysql
 - mysql workbench
 - data definition language
-- data manimulation language
+- data manipulation language
 - data query language
 - aggregate functions
 - views
@@ -86,7 +86,7 @@ The project contains multiple sub modules, each with a similar structure:
 ## JDBC
 
 - statements
-- prepared statemenets
+- prepared statements
 - transactions
 
 ---
